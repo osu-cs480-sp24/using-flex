@@ -4,6 +4,7 @@
 int num_chars = 0;
 int num_words = 0;
 int num_lines = 0;
+int num_ints = 0;
 %}
 
 %option noyywrap
@@ -13,6 +14,11 @@ int num_lines = 0;
 \n {
   num_lines++;
   num_chars++;
+}
+
+int {
+  num_ints++;
+  REJECT;
 }
 
 [^ \t\n]+ {
@@ -28,6 +34,6 @@ int num_lines = 0;
 
 int main() {
   yylex();
-  printf("\t%d\t%d\t%d\n", num_lines, num_words, num_chars);
+  printf("\t%d\t%d\t%d\t%d\n", num_lines, num_words, num_chars, num_ints);
   return 0;
 }

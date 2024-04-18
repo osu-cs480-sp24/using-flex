@@ -2,6 +2,8 @@
 #include <stdio.h>
 
 void foo();
+int global_val = 16;
+int another_int = 0;
 %}
 
 %option yylineno
